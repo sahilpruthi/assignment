@@ -1,0 +1,19 @@
+<%= form_for(@secret_code, url: generate_secret_codes_secret_code_index_path) do |f| %>
+  <label> Select number of secret codes:   </label>
+  <%= select_tag "number_of_codes", options_for_select([1, 10, 20, 50, 100], 10) %><br/>
+  <%= f.submit 'Save'%>
+<% end %>
+<br/ >
+<br/ >
+<table style="width:100%">
+<tr>
+  <th>Email</th>
+  <th>Secret Code</th>
+</tr>
+<% @secret_codes.each do |code|%>
+  <tr>
+    <td><%= code.user.try(:email) %></td>
+    <td><%= code.code %></td>
+  </tr>
+<% end %>  
+</table>
