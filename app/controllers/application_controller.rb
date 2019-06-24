@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource)
-		stored_location_for(resource) || root_path
+    if resource.role.eql?('Admin')
+      secret_code_index_path
+    else
+		  root_path
+    end
 	end
 
   protected

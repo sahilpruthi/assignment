@@ -1,3 +1,6 @@
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+
+
 <%= form_for(@secret_code, url: generate_secret_codes_secret_code_index_path) do |f| %>
   <label> Select number of secret codes:   </label>
   <%= select_tag "number_of_codes", options_for_select([1, 10, 20, 50, 100], 10) %><br/>
